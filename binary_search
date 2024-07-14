@@ -1,0 +1,71 @@
+import java.util.Scanner;
+class Sort
+{
+	public void sortArray(int[] arr,int n)
+	{
+		for(int i=0;i<n;i++)
+			for(int j=i+1;j<n;j++)
+			{
+				if(arr[i]>arr[j])
+				{
+					int temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+		System.out.println("Sorted array : \n");
+		for(int i : arr)
+			System.out.printf("%d \t",i);
+	}
+}
+class Search extends Sort
+{
+	public int searchElem(int[] arr, int i,int n,int ser)
+	{
+		if(i>n-1)
+		{
+			System.out.println("Element not found");
+			return -1;
+		}
+		int mid,j;
+		j=n-1;
+		mid=(i+j)/2;
+		if(arr[mid]==ser)
+		{
+			System.out.printf("Element found at index %d",mid);
+			return mid;
+		}
+		else if(arr[mid]<ser)
+		{
+			i=mid+1;
+			return searchElem(arr,i,n,ser);
+		}
+		else
+		{
+			mid-=1;
+			return searchElem(arr,i,mid,ser);
+		}
+	}
+}
+public class Sample6
+{
+	public static void main(String[] args) 
+	{
+		int n,i=0;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter number of numbers in your String : \n");
+		n = sc.nextInt();
+		int[] arr = new int[n];
+		System.out.printf("Enter %d numbers: \n",n);
+		for(i=0;i<n;i++)
+		{
+			arr[i] = sc.nextInt();
+		}
+		System.out.println("Enter element to be searched : \t");
+		int ser=sc.nextInt();
+		Search se = new Search();
+		se.sortArray(arr,n);
+		se.searchElem(arr,0,n,ser);
+		sc.close();
+	}
+}
