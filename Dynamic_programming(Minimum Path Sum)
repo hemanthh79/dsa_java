@@ -1,3 +1,6 @@
+#This code is a solution for leetcode problem where we need to find minimum path sum from starting node of a matrix to the ending node.
+#This problem is solved using recursion + Dynamic programming where already traversed nodes values are taken when required snd new node values are computed using recursion
+
 class Solution {
     public int minPathSum(int[][] grid) {
         int[][] dp = new int[grid.length][grid[0].length];
